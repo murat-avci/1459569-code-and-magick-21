@@ -72,7 +72,7 @@ const setupOpenIcon = document.querySelector(`.setup-open-icon`);
 const setupClose = setup.querySelector(`.setup-close`);
 
 const onEscPress = function (evt) {
-  if (evt.keyCode === KeyCodes.ESC && evt.target !== setupUserName) {
+  if (evt.keyCode === KeyCodes.ESC) {
     setup.classList.add(`hidden`);
   }
 };
