@@ -6,6 +6,7 @@ const WizardCustoms = {
   COAT_COLORS: [`rgb(101, 137, 164)`, `rgb(241, 43, 107)`, `rgb(146, 100, 161)`, `rgb(56, 159, 117)`, `rgb(215, 210, 55)`, `rgb(0, 0, 0)`],
   EYES_COLORS: [`black`, `red`, `blue`, `yellow`, `green`],
   FIREBALL_COLORS: [`#ee4830`, `#30a8ee`, `#5ce6c0`, `#e848d5`, `#e6e848`],
+  WIZARD_COUNT: 4
 };
 
 const KeyCodes = {ENTER: 13, ESC: 27};
@@ -31,7 +32,7 @@ const getRandomElement = function (arr) {
 const generateWizards = function () {
   let wizards = [];
 
-  for (let i = 0; i < WIZARD_COUNT; i++) {
+  for (let i = 0; i < WizardCustoms.WIZARD_COUNT; i++) {
     let wizard = {
       name: `${getRandomElement(WizardCustoms.WIZARD_FIRST_NAMES)} ${getRandomElement(WizardCustoms.WIZARD_LAST_NAMES)}`,
       coatColor: getRandomElement(WizardCustoms.COAT_COLORS),
