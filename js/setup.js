@@ -1,11 +1,12 @@
 'use strict';
 
-const WIZARD_FIRST_NAMES = [`Иван`, `Хуан`, `Себастьян`, `Мария`, `Кристоф`, `Виктор`, `Юлия`, `Люпита`, `Вашингтон`];
-const WIZARD_LAST_NAMES = [`да Марья`, `Верон`, `Мирабелла`, `Вальц`, `Онопко`, `Топольницкая`, `Нионго`, `Ирвинг`];
-const COAT_COLORS = [`rgb(101, 137, 164)`, `rgb(241, 43, 107)`, `rgb(146, 100, 161)`, `rgb(56, 159, 117)`, `rgb(215, 210, 55)`, `rgb(0, 0, 0)`];
-const EYES_COLORS = [`black`, `red`, `blue`, `yellow`, `green`];
-const FIREBALL_COLORS = [`#ee4830`, `#30a8ee`, `#5ce6c0`, `#e848d5`, `#e6e848`];
-const WIZARD_COUNT = 4;
+const WizardCustoms = {
+  WIZARD_FIRST_NAMES: [`Иван`, `Хуан`, `Себастьян`, `Мария`, `Кристоф`, `Виктор`, `Юлия`, `Люпита`, `Вашингтон`],
+  WIZARD_LAST_NAMES: [`да Марья`, `Верон`, `Мирабелла`, `Вальц`, `Онопко`, `Топольницкая`, `Нионго`, `Ирвинг`],
+  COAT_COLORS: [`rgb(101, 137, 164)`, `rgb(241, 43, 107)`, `rgb(146, 100, 161)`, `rgb(56, 159, 117)`, `rgb(215, 210, 55)`, `rgb(0, 0, 0)`],
+  EYES_COLORS: [`black`, `red`, `blue`, `yellow`, `green`],
+  FIREBALL_COLORS: [`#ee4830`, `#30a8ee`, `#5ce6c0`, `#e848d5`, `#e6e848`],
+};
 
 const KeyCodes = {ENTER: 13, ESC: 27};
 
@@ -32,9 +33,9 @@ const generateWizards = function () {
 
   for (let i = 0; i < WIZARD_COUNT; i++) {
     let wizard = {
-      name: `${getRandomElement(WIZARD_FIRST_NAMES)} ${getRandomElement(WIZARD_LAST_NAMES)}`,
-      coatColor: getRandomElement(COAT_COLORS),
-      eyesColor: getRandomElement(EYES_COLORS)
+      name: `${getRandomElement(WizardCustoms.WIZARD_FIRST_NAMES)} ${getRandomElement(WizardCustoms.WIZARD_LAST_NAMES)}`,
+      coatColor: getRandomElement(WizardCustoms.COAT_COLORS),
+      eyesColor: getRandomElement(WizardCustoms.EYES_COLORS)
     };
     wizards.push(wizard);
   }
@@ -123,17 +124,17 @@ const getNextColor = function (colors, currentColor) {
 };
 
 const onCoatClick = function () {
-  wizardCoatColor.value = getNextColor(COAT_COLORS, wizardCoatColor.value);
+  wizardCoatColor.value = getNextColor(WizardCustoms.COAT_COLORS, wizardCoatColor.value);
   wizardCoat.style.fill = wizardCoatColor.value;
 };
 
 const onEyesClick = function () {
-  wizardEyesColor.value = getNextColor(EYES_COLORS, wizardEyesColor.value);
+  wizardEyesColor.value = getNextColor(WizardCustoms.EYES_COLORS, wizardEyesColor.value);
   wizardEyes.style.fill = wizardEyesColor.value;
 };
 
 const onFireballClick = function () {
-  fireballColor.value = getNextColor(FIREBALL_COLORS, fireballColor.value);
+  fireballColor.value = getNextColor(WizardCustoms.FIREBALL_COLORS, fireballColor.value);
   fireball.style.background = fireballColor.value;
 };
 
