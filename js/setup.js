@@ -92,17 +92,20 @@ const onEscPress = function (evt) {
 setupClose.addEventListener(`click`, closeSetup);
 setupOpen.addEventListener(`click`, openSetup);
 
-setupOpenIcon.addEventListener(`keydown`, function (evt) {
+const openSetupIcon = function (evt) {
   if (evt.keyCode === KeyCodes.ENTER) {
     openSetup();
   }
-});
+};
 
-setupClose.addEventListener(`keydown`, function (evt) {
+const closeSetupIcon = function (evt) {
   if (evt.keyCode === KeyCodes.ENTER) {
     closeSetup();
   }
-});
+};
+
+setupOpenIcon.addEventListener(`keydown`, openSetupIcon);
+setupClose.addEventListener(`keydown`, closeSetupIcon);
 
 const wizard = document.querySelector(`.setup-wizard-appearance`);
 const wizardCoat = wizard.querySelector(`.wizard-coat`);
