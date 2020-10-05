@@ -1,8 +1,6 @@
 'use strict';
 
 (function () {
-  const WIZARD_FIRST_NAMES = [`Иван`, `Хуан`, `Себастьян`, `Мария`, `Кристоф`, `Виктор`, `Юлия`, `Люпита`, `Вашингтон`];
-  const WIZARD_LAST_NAMES = [`да Марья`, `Верон`, `Мирабелла`, `Вальц`, `Онопко`, `Топольницкая`, `Нионго`, `Ирвинг`];
   const WIZARD_COUNT = 4;
 
   const userDialog = document.querySelector(`.setup`);
@@ -17,7 +15,8 @@
 
     for (let i = 0; i < WIZARD_COUNT; i++) {
       let wizard = {
-        name: `${window.common.getRandomElement(WIZARD_FIRST_NAMES)} ${window.common.getRandomElement(WIZARD_LAST_NAMES)}`,
+        name: `${window.common.getRandomElement(window.common.WIZARD_FIRST_NAMES)}
+        ${window.common.getRandomElement(window.common.WIZARD_LAST_NAMES)}`,
         coatColor: window.common.getRandomElement(window.common.COAT_COLORS),
         eyesColor: window.common.getRandomElement(window.common.EYES_COLORS)
       };
