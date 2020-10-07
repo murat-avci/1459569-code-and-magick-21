@@ -43,13 +43,13 @@
     return xhr;
   };
 
-  const load = function (onLoad, onError) { // загрузка данных с сервера
+  const load = function (onLoad, onError) {
     const xhr = setRequest(onLoad, onError);
     xhr.open(Method.GET, Url.LOAD);
     xhr.send();
   };
 
-  const save = function (data, onLoad, onError) { // отправка данных на сервер
+  const save = function (data, onLoad, onError) {
     const xhr = setRequest(onLoad, onError);
     xhr.open(Method.POST, Url.SAVE);
     xhr.send(data);
