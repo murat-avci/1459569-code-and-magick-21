@@ -10,21 +10,6 @@
     .querySelector(`.setup-similar-item`);
   const similarListElements = userDialog.querySelector(`.setup-similar-list`);
 
-  const generateWizards = function () {
-    let wizards = [];
-
-    for (let i = 0; i < WIZARD_COUNT; i++) {
-      let wizard = {
-        name: `${window.common.getRandomElement(window.common.WIZARD_FIRST_NAMES)}
-        ${window.common.getRandomElement(window.common.WIZARD_LAST_NAMES)}`,
-        coatColor: window.common.getRandomElement(window.common.COAT_COLORS),
-        eyesColor: window.common.getRandomElement(window.common.EYES_COLORS)
-      };
-      wizards.push(wizard);
-    }
-    return wizards;
-  };
-
   const renderOneWizard = function (wizard) {
     let wizardElement = similarWizardTemplate.cloneNode(true);
 
@@ -35,17 +20,15 @@
     return wizardElement;
   };
 
-  const renderWizards = function (arrWizards) {
+  window.renderWizards = function (arrWizards) {
     let fragment = document.createDocumentFragment();
 
-    for (let i = 0; i < arrWizards.length; i++) {
+    for (let i = 0; i < WIZARD_COUNT; i++) {
       fragment.appendChild(renderOneWizard(arrWizards[i]));
     }
-    return fragment;
+
+    similarListElements.appendChild(fragment);
+    userDialog.querySelector(`.setup-similar`).classList.remove(`hidden`);
   };
 
-  const wizards = generateWizards();
-
-  similarListElements.appendChild(renderWizards(wizards));
-  userDialog.querySelector(`.setup-similar`).classList.remove(`hidden`);
 })();
