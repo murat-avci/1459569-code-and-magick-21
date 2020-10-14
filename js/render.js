@@ -20,15 +20,20 @@
     return wizardElement;
   };
 
-  window.backend.load(function (arrWizards) {
+  window.renderWizards = function (arrWizards) {
+    const wizardNumbers = arrWizards.length > MAX_SIMILAR_WIZARD_COUNT ?
+      MAX_SIMILAR_WIZARD_COUNT : arrWizards.length;
+
+    similarListElements.innerHTML = ``;
+
     const fragment = document.createDocumentFragment();
 
-    for (let i = 0; i < MAX_SIMILAR_WIZARD_COUNT; i++) {
+    for (let i = 0; i < wizardNumbers; i++) {
       fragment.appendChild(renderOneWizard(arrWizards[i]));
     }
 
     similarListElements.appendChild(fragment);
     userDialog.querySelector(`.setup-similar`).classList.remove(`hidden`);
-  }, function () {});
+  };
 
 })();
