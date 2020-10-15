@@ -2,10 +2,13 @@
 
 (function () {
 
-  window.form.setWizardClickHandler();
-  window.form.setFireballClickHandler();
+  const successLoadHandler = function (data) {
+    window.wizards = data;
+    window.updateWizards(window.wizards);
+  };
+
   window.form.setSubmitHandler();
 
-  window.backend.load(window.renderWizards, window.form.errorHandler);
+  window.backend.load(successLoadHandler, window.message.showError);
 
 })();

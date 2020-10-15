@@ -2,7 +2,7 @@
 
 (function () {
 
-  const RESPONSE = `json`;
+  const RESPONSE_TYPE = `json`;
   const TIMEOUT = 10000;
 
   const Url = {
@@ -19,7 +19,7 @@
     OK: 200
   };
 
-  const loadHandler = function (request, successHandler, failHandler) {
+  const addListener = function (request, successHandler, failHandler) {
     request.addEventListener(`load`, function () {
       if (request.status === StatusCode.OK) {
         successHandler(request.response);
@@ -36,21 +36,21 @@
     request.timeout = TIMEOUT;
   };
 
-  const setRequest = function (onLoad, onError) {
+  const createRequest = function (onLoad, onError) {
     const xhr = new XMLHttpRequest();
-    xhr.responseType = RESPONSE;
-    loadHandler(xhr, onLoad, onError);
+    xhr.responseType = RESPONSE_TYPE;
+    addListener(xhr, onLoad, onError);
     return xhr;
   };
 
   const load = function (onLoad, onError) {
-    const xhr = setRequest(onLoad, onError);
+    const xhr = createRequest(onLoad, onError);
     xhr.open(Method.GET, Url.LOAD);
     xhr.send();
   };
 
   const save = function (data, onLoad, onError) {
-    const xhr = setRequest(onLoad, onError);
+    const xhr = createRequest(onLoad, onError);
     xhr.open(Method.POST, Url.SAVE);
     xhr.send(data);
   };
