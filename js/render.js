@@ -1,39 +1,37 @@
 'use strict';
 
-(function () {
-  const MAX_SIMILAR_WIZARD_COUNT = 4;
 
-  const userDialog = document.querySelector(`.setup`);
+const MAX_SIMILAR_WIZARD_COUNT = 4;
 
-  const similarWizardTemplate = document.querySelector(`#similar-wizard-template`)
-    .content
-    .querySelector(`.setup-similar-item`);
-  const similarListElements = userDialog.querySelector(`.setup-similar-list`);
+const userDialog = document.querySelector(`.setup`);
 
-  const renderOneWizard = function (wizard) {
-    let wizardElement = similarWizardTemplate.cloneNode(true);
+const similarWizardTemplate = document.querySelector(`#similar-wizard-template`)
+  .content
+  .querySelector(`.setup-similar-item`);
+const similarListElements = userDialog.querySelector(`.setup-similar-list`);
 
-    wizardElement.querySelector(`.setup-similar-label`).textContent = wizard.name;
-    wizardElement.querySelector(`.wizard-coat`).style.fill = wizard.colorCoat;
-    wizardElement.querySelector(`.wizard-eyes`).style.fill = wizard.colorEyes;
+const renderOneWizard = function (wizard) {
+  let wizardElement = similarWizardTemplate.cloneNode(true);
 
-    return wizardElement;
-  };
+  wizardElement.querySelector(`.setup-similar-label`).textContent = wizard.name;
+  wizardElement.querySelector(`.wizard-coat`).style.fill = wizard.colorCoat;
+  wizardElement.querySelector(`.wizard-eyes`).style.fill = wizard.colorEyes;
 
-  window.renderWizards = function (arrWizards) {
-    const wizardNumbers = arrWizards.length > MAX_SIMILAR_WIZARD_COUNT ?
-      MAX_SIMILAR_WIZARD_COUNT : arrWizards.length;
+  return wizardElement;
+};
 
-    similarListElements.innerHTML = ``;
+window.renderWizards = function (arrWizards) {
+  const wizardNumbers = arrWizards.length > MAX_SIMILAR_WIZARD_COUNT ?
+    MAX_SIMILAR_WIZARD_COUNT : arrWizards.length;
 
-    const fragment = document.createDocumentFragment();
+  similarListElements.innerHTML = ``;
 
-    for (let i = 0; i < wizardNumbers; i++) {
-      fragment.appendChild(renderOneWizard(arrWizards[i]));
-    }
+  const fragment = document.createDocumentFragment();
 
-    similarListElements.appendChild(fragment);
-    userDialog.querySelector(`.setup-similar`).classList.remove(`hidden`);
-  };
+  for (let i = 0; i < wizardNumbers; i++) {
+    fragment.appendChild(renderOneWizard(arrWizards[i]));
+  }
 
-})();
+  similarListElements.appendChild(fragment);
+  userDialog.querySelector(`.setup-similar`).classList.remove(`hidden`);
+};
