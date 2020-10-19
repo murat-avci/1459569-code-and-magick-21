@@ -1,17 +1,15 @@
 'use strict';
 
-(function () {
 
-  const showError = function (errorMsg) {
-    const message = document.createElement(`div`);
-    message.style = `position: absolute; top: 0; left: 0; right: 0; z-index: 10; margin: 0 auto; padding: 50px; font-size: 2em; text-align: center; background-color: rgba(255, 0, 0, 0.9);`;
+const showError = function (errorMsg) {
+  const message = document.createElement(`div`);
+  message.style = `position: absolute; top: 0; left: 0; right: 0; z-index: 10; margin: 0 auto; padding: 50px; font-size: 2em; text-align: center; background-color: rgba(255, 0, 0, 0.9);`;
 
-    message.textContent = errorMsg;
-    document.body.appendChild(message);
-  };
+  message.textContent = errorMsg;
+  document.body.appendChild(message);
+};
 
-  window.message = {
-    showError
-  };
+window.message = {
+  showError
+};
 
-})();
