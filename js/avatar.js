@@ -1,0 +1,26 @@
+'use strict';
+
+const FILE_TYPES = [`gif`, `jpg`, `jpeg`, `png`];
+
+const fileChooser = document.querySelector(`.upload input[type=file]`);
+const preview = document.querySelector(`.setup-user-pic`);
+
+fileChooser.addEventListener(`change`, function () {
+  const file = fileChooser.files[0];
+  const fileName = file.name.toLowerCase();
+
+  const extensionMatches = FILE_TYPES.some(function (extension) {
+    return fileName.endsWith(extension);
+  });
+
+  if (extensionMatches) {
+    const reader = new FileReader();
+
+    reader.addEventListener(`load`, function () {
+      preview.src = reader.result;
+    });
+
+    reader.readAsDataURL(file);
+  }
+});
+

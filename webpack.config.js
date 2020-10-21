@@ -15,6 +15,7 @@ module.exports = {
     `./js/form.js`,
     `./js/same-wizards.js`,
     `./js/debounce.js`,
+    `./js/avatar.js`,
     `./js/main.js`
   ],
   output: {
